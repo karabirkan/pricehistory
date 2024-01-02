@@ -1,3 +1,4 @@
+import HeroCarousel from "@/components/HeroCarousel";
 import Searchbar from "@/components/Searchbar";
 import Image from "next/image";
 import React from "react";
@@ -5,7 +6,7 @@ import React from "react";
 const Home = () => {
   return (
     <>
-      <section className="px-6 border-2 border-red-500 md:px-20 py-24">
+      <section className="px-6  md:px-20 py-24">
         <div className="flex max-xl:flex-col gap-16">
           <div className="flex flex-col justify-center">
             <p className="small-text">
@@ -27,7 +28,7 @@ const Home = () => {
             </p>
             <Searchbar />
           </div>
-          Hero
+          <HeroCarousel />
         </div>
       </section>
       <section className="trending-section">
