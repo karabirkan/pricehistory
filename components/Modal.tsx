@@ -1,11 +1,27 @@
 "use client";
-import React from "react";
+import React, { FormEvent } from "react";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
-
-const Modal = () => {
+import { addUserEmailToProduct } from "@/lib/actions";
+interface Props {
+  productId: string;
+}
+const Modal = ({ productId }: Props) => {
   let [isOpen, setIsOpen] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    await addUserEmailToProduct(productId, email);
+
+    setIsSubmitting(false);
+    setEmail("");
+    closeModal();
+  };
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -68,11 +84,42 @@ const Modal = () => {
                       onClick={closeModal}
                     />
                   </div>
-                  <h4>
+                  <h4 className="dialog-head_text">
                     Stay updated with product pricing alerts right in your
                     inbox!
                   </h4>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Never miss a bargain again with our timely alerts!
+                  </p>
                 </div>
+                <form onSubmit={handleSubmit} className="flex flex-col mt-5">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-medium text-gray-700"
+                  >
+                    Email address
+                  </label>
+                  <div className="dialog-input_container">
+                    <Image
+                      src="/assets/icons/mail.svg"
+                      alt="mail"
+                      height={18}
+                      width={18}
+                    />
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      placeholder="Enter your email address"
+                      className="dialog-input"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <button type="submit" className="dialog-btn">
+                    {isSubmitting ? "Submitting..." : "Track"}
+                  </button>
+                </form>
               </div>
             </Transition.Child>
           </div>
