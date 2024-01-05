@@ -57,7 +57,7 @@
   }
 
   .trending-section {
-    @apply flex flex-col gap-10 px-6 md:px-20 py-24;
+    @apply flex flex-col gap-10 px-6 md:px-4 py-24;
   }
 
   /* PRODUCT DETAILS PAGE STYLES */
@@ -91,7 +91,7 @@
   }
 
   .dialog-content {
-    @apply p-6  bg-white inline-block w-full max-w-md my-8 overflow-hidden text-left align-middle transition-all transform  shadow-xl rounded-2xl;
+    @apply p-6  bg-white inline-block w-full w-full my-8 overflow-hidden text-left align-middle transition-all transform  shadow-xl rounded-2xl;
   }
 
   .dialog-head_text {
