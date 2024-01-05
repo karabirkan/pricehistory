@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type PriceHistoryItem = {
   price: number;
 };
@@ -7,6 +9,8 @@ export type User = {
 };
 
 export type Product = {
+  ratings: ReactNode;
+  stars: number;
   _id?: string;
   url: string;
   currency: string;
@@ -22,7 +26,6 @@ export type Product = {
   description: string;
   category: string;
   reviewsCount: number;
-  stars: number;
   isOutOfStock: Boolean;
   users?: User[];
 };

@@ -30,6 +30,10 @@ export function extractPrice(...elements: any) {
   return "";
 }
 
+export function extractRatingsString($: any): string {
+  return $(".centerColAlign #acrCustomerReviewLink .a-size-base").text().trim();
+}
+
 // Extracts and returns the currency symbol from an element.
 export function extractCurrency(element: any) {
   const currencyText = element.text().trim().slice(0, 1);
