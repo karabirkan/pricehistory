@@ -10,7 +10,7 @@ export type User = {
 
 export type Product = {
   ratings: ReactNode;
-  stars: number;
+  stars: string;
   _id?: string;
   url: string;
   currency: string;
